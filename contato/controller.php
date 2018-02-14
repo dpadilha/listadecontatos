@@ -1,5 +1,4 @@
 <?php
-	$titulo = "Manutenção de Usuários";
 
 	header('Content-Type: text/html; charset=utf-8');
 	/*Abre a conexão do banco de dados*/

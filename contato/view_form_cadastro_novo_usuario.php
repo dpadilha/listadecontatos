@@ -72,7 +72,7 @@
 
 						<div class="form-group ">
 							<label>Informe o email:</label>
-							<input class="form-control" type="email" maxlength="120" name="txtEmailUsuario">
+							<input class="form-control" type="text" maxlength="120" name="txtEmailUsuario">
 						</div>
 							<div class="form-group ">
 							<label>Informe a data de nascimento:</label>

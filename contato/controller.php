@@ -124,22 +124,19 @@
 				require("view_lista.php");
 			/*Se o cadastro falhou manda a mensagem informando do erro e chama o formulario de cadastro novamente*/
 			}else{
-				if($nome == "" && $email == ""){
-					$retornoExc = "O cadastro falhou o campo NOME e EMAIL é obrigatório, tente novamente!";
-				}
-				else if($email == ""){
-					$retornoExc = "O cadastro falhou o campo EMAIL é obrigatório, tente novamente!";
+				if(!valida_email($email)){
+					$retornoExc = "O cadastro falhou, digite um email valido!";
 				}
 				else if($nome == ""){
-					$retornoExc = "O cadastro falhou o campo NOME é obrigatório, tente novamente!";
-				}else{
-					$retornoExc = "O cadastro falhou, tente novamente!";	
+					$retornoExc = "O cadastro falhou o campo nome é obrigatório, tente novamente!";
 				}
 				require("view_form_cadastro_novo_usuario.php");
 			}
+		
 		}else{
 			require("view_form_cadastro_novo_usuario.php");
 		}
+
 	}
 
 	function alterarUsuario($conexao){
@@ -169,26 +166,37 @@
 				require("view_lista.php");
 			}else{
 				/*retorna mensagem informando que a alteração não foi realizada*/
-				$retornoExc = "A alteração falhou, tente novamente!";
+				if(!valida_email($email)){
+					$retornoExc = "A alteração falhou, digite um email valido!";
+				}
+				else if($nome == ""){
+					$retornoExc = "A alteração falhou o campo nome é obrigatório, tente novamente!";
+				}
+				$dados = listarDados($conexao);
+				require("view_lista.php");
 			}
-			return false;
 			
+		}else if(isset($_GET['codigo'])){
+			/*Pega o id passado pela url do contato que deseja excluir*/
+			$id = $_GET['codigo'];
+			/*Pega os dados do usuário passando a conexão e id*/
+			$retorno = usuario_porId($conexao,$id);
+			/*Se não existir retorno informa que busca falhou e retorna falso*/
+			if(!$retorno){
+				$retornoExc = "Falha em buscar o Contato ";
+				return false;
+			}
+			/*Cria uma linha com os dados do contato passando para a variavel*/
+			$dadosUsuario = mysqli_fetch_row($retorno);
+			/*Passa para a variavel dados as informações do array com seus indices*/
+			$dados  = array("id" => $dadosUsuario[0], "nome" => $dadosUsuario[1], "logradouro" => $dadosUsuario[2] , "numero" => $dadosUsuario[3], "bairro" => $dadosUsuario[4], "cidade" => $dadosUsuario[5], "estado" => $dadosUsuario[6], "telefone" => $dadosUsuario[7], "email" => $dadosUsuario[8], "sexo" => $dadosUsuario[9], "dtNasc" => $dadosUsuario[10]);
+			/*Chama o formulario para alteração do usuário*/
+			require("view_form_cadastro_altera_usuario.php");
+		}else{
+			$dados = listarDados($conexao);
+			require("view_lista.php");
 		}
-		/*Pega o id passado pela url do contato que deseja excluir*/
-		$id = $_GET['codigo'];
-		/*Pega os dados do usuário passando a conexão e id*/
-		$retorno = usuario_porId($conexao,$id);
-		/*Se não existir retorno informa que busca falhou e retorna falso*/
-		if(!$retorno){
-			$retornoExc = "Falha em buscar o Contato ";
-			return false;
-		}
-		/*Cria uma linha com os dados do contato passando para a variavel*/
-		$dadosUsuario = mysqli_fetch_row($retorno);
-		/*Passa para a variavel dados as informações do array com seus indices*/
-		$dados  = array("id" => $dadosUsuario[0], "nome" => $dadosUsuario[1], "logradouro" => $dadosUsuario[2] , "numero" => $dadosUsuario[3], "bairro" => $dadosUsuario[4], "cidade" => $dadosUsuario[5], "estado" => $dadosUsuario[6], "telefone" => $dadosUsuario[7], "email" => $dadosUsuario[8], "sexo" => $dadosUsuario[9], "dtNasc" => $dadosUsuario[10]);
-		/*Chama o formulario para alteração do usuário*/
-		require("view_form_cadastro_altera_usuario.php");
+		
 	}
 
 	function buscar_contato($conexao){

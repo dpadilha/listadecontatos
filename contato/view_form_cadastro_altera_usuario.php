@@ -74,8 +74,8 @@
 
 			
 					<div class="form-group">
-						<label>Informe o email:L</label>
-						<input class="form-control" type="email" maxlength="120" name="txtEmailUsuario"  value="<?=$dados['email']?>">
+						<label>Informe o email:</label>
+						<input class="form-control" type="text" maxlength="120" name="txtEmailUsuario"  value="<?=$dados['email']?>">
 					</div>		
 
 					<div class="form-group">

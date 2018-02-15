@@ -21,8 +21,7 @@
 
 	function usuario_cadastrar($conexao,$nome,$telefone,$email,$logradouro,$numero,$bairro,
 				$cidade,$estado,$sexo,$dtNasc){
-		
-		if($nome == "" || $email == ""){
+		if($nome == "" || !valida_email($email)){
 			return false;
 
 		}
@@ -35,7 +34,7 @@
 
 	function usuario_alterar($conexao,$nome,$telefone,$email,$logradouro,$numero,$bairro,
 				$cidade,$estado,$sexo,$dtNasc,$id){
-		if($nome == ""){
+		if($nome == "" || !valida_email($email)){
 			return false;
 
 		}
@@ -53,3 +52,11 @@
 		$resultado = mysqli_query($conexao,$sql);
 		return $resultado;
 	}
+
+	function valida_email($email) {
+		if(preg_match("/^([[:alnum:]_.-]){3,}@([[:lower:][:digit:]_.-]{3,})(.[[:lower:]]{2,3})(.[[:lower:]]{2})?$/", $email) || empty($email) || $email == "") {
+			return true;
+		}else{
+			return false;
+		}
+}

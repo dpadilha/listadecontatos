@@ -37,7 +37,7 @@
 					<div class="col-md-12">
 						<div class="form-group" >
 							<label >Digite o nome completo:</label>
-							<input class = "form-control" type="text" maxlength="120" name="txtNomeUsuario" required>
+							<input class = "form-control" type="text" maxlength="120" name="txtNomeUsuario" >
 						</div>
 					</div>
 					
@@ -79,17 +79,17 @@
 
 						<div class="form-group ">
 							<label>Informe o email:</label>
-							<input class="form-control" type="email" maxlength="120" name="txtEmailUsuario" required>
+							<input class="form-control" type="email" maxlength="120" name="txtEmailUsuario" >
 						</div>
 							<div class="form-group ">
 							<label>Informe a data de nascimento:</label>
-							<input class="form-control" type="date" maxlength="120" name="txtDtnascUsuario">
+							<input class="form-control" type="date" name="txtDtnascUsuario">
 						</div>
 						
 						<div class="form-group">
 							<label>Informe o género sexual:</label><br/>
-							<input type="radio" name='txtSexoUsuario' value="masculino"> Masculino<br/>
-							<input type="radio" name='txtSexoUsuario' value="feminino"> Feminino
+							<input type="radio" name='txtSexoUsuario' value="M" checked> Masculino<br/>
+							<input type="radio" name='txtSexoUsuario' value="F"> Feminino
 						</div>
 					</div>
 					

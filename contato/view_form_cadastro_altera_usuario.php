@@ -32,17 +32,22 @@
 	<div class ="col-md-10">
 		
 		<form method="POST" action="index.php?r=contato&p=alterar">
-			<div class="form-group">
-				<label>Digite o nome completo:</label>
-				<input class = "form-control" type="text" maxlength="120" name="txtNomeUsuario" value="<?=$dados['nome']?>">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label>Digite o nome completo:</label>
+						<input class = "form-control" type="text" maxlength="120" name="txtNomeUsuario" value="<?=$dados['nome']?>">
+					</div>
+				</div>
+			
+				<div class="col-md-12">
+					<div class="form-group">
+						<label>Informe a rua:</label>
+						<input class="form-control" type="text" maxlength="120" name="txtLograUsuario" value="<?=$dados['logradouro']?>">
+					</div>
+				</div>
 			</div>
-
-			<div class="form-group">
-				<label>Informe a rua:</label>
-				<input class="form-control" type="text" maxlength="120" name="txtLograUsuario" value="<?=$dados['logradouro']?>">
-			</div>
-
-			<div class="container-fluid">
+			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Informe o numero:</label>
@@ -85,16 +90,21 @@
 
 					<div class="form-group">
 						<label>Informe o género sexual:</label><br/>
-						<input type="radio" name="txtSexoUsuario" value="masculino"> Masculino<br/>
-						<input type="radio" name="txtSexoUsuario" value="feminino"> Feminino
+						
+						<input type="radio" name="txtSexoUsuario" value="M" checked> Masculino<br/>
+						<input type="radio" name="txtSexoUsuario" value="F"> Feminino
 					</div>
 					
 				</div>
-
-				<div class="form-group">
-					<input name="idusuario" type="hidden"  value="<?=$dados['id']?>">
-					<input class="btn btn-primary" type="submit" value="Alterar Contato">
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<input name="idusuario" type="hidden"  value="<?=$dados['id']?>">
+						<input class="btn btn-primary" type="submit" value="Alterar Contato">
+					</div>
 				</div>
+			</div>
 		</form>
 
 	</div>

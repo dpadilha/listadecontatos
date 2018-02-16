@@ -2,7 +2,10 @@
 
 	header('Content-Type: text/html; charset=utf-8');
 	/*Abre a conexão do banco de dados*/
-	$conexao = @mysqli_connect($db_host,$db_user, $db_pass, $db_name);
+	$conexao = mysqli_connect($db_host,$db_user, $db_pass, $db_name);
+
+	
+
 	/*Seta que o banco vai utilizar o padrão utf-8*/
 	mysqli_set_charset ( $conexao , 'utf8' );
 
@@ -110,7 +113,7 @@
 			$bairro = $_POST['txtBairroUsuario'];
 			$cidade = $_POST['txtCidadeUsuario'];
 			$estado = $_POST['txtEstadoUsuario'];
-			$sexo = isset($_POST['txtSexoUsuario']);
+			$sexo = $_POST['txtSexoUsuario'];
 			$dtNasc = $_POST['txtDtnascUsuario'];
 
 

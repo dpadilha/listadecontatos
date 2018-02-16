@@ -17,7 +17,7 @@
 		<a class="btn btn-default " href="index.php?r=contato&p=cadastrar"><i class="glyphicon glyphicon-user"></i> Criar Contato</a>
 
 		<form method="POST" action="index.php?r=contato&p=buscar" class="navbar-form pull-right">
-			<input name = "txtBusca" type="text" class="span2" placeholder="Buscar">
+			<input name = "txtBusca" type="text" class="form-control" placeholder="Buscar">
 			<button class="btn btn-default"><i class ="glyphicon glyphicon-search"></i></button>
 		</form>
 

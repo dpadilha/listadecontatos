@@ -21,14 +21,10 @@
 
 	function usuario_cadastrar($conexao,$nome,$telefone,$email,$logradouro,$numero,$bairro,
 				$cidade,$estado,$sexo,$dtNasc){
-		if($nome == "" || !valida_email($email)){
-			return false;
+	
+		$sql = sprintf("INSERT INTO contato(nome, telefone, email, logradouro, numero, bairro, cidade, estado, sexo, dtNasc) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')", $nome, $telefone,$email,$logradouro,$numero,$bairro,$cidade,$estado,$sexo,$dtNasc);
 
-		}
-		$sql = sprintf("INSERT INTO contato (nome,telefone,email,logradouro,numero,bairro,cidade,estado,sexo,dtNasc) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')", $nome, $telefone,$email,$logradouro,$numero,$bairro,$cidade,$estado,$sexo,$dtNasc);
-		
 		$resultado = mysqli_query($conexao,$sql);
-
 		return $resultado;
 	}
 
@@ -39,8 +35,8 @@
 
 		}
 		$sql = sprintf("UPDATE contato SET nome = '%s', telefone = '%s', email = '%s', logradouro = '%s', numero = %s, bairro = '%s', cidade = '%s', estado = '%s', sexo = '%s', dtNasc = '%s' WHERE id = '%s' ", $nome, $telefone,$email,$logradouro,$numero,$bairro,$cidade,$estado,$sexo,$dtNasc,$id);
+		
 		$resultado = mysqli_query($conexao,$sql);
-
 		return $resultado;
 	}
 
